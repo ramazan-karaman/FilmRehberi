@@ -79,7 +79,7 @@ dependencies {
     implementation(libs.retrofit.converter.moshi)
 
     implementation(libs.okhttp.core)
-    implementation(libs.okhttp.bom)
+    implementation(platform(libs.okhttp.bom))
     implementation(libs.okhttp.logging.interceptor)
 
     implementation(libs.lifecycle.runtime.compose)
