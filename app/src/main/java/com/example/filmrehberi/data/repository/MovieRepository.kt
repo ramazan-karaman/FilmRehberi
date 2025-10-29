@@ -2,6 +2,7 @@ package com.example.filmrehberi.data.repository
 
 import com.example.filmrehberi.data.local.MovieDao
 import com.example.filmrehberi.data.local.MovieEntity
+import com.example.filmrehberi.data.model.MovieDetail
 import com.example.filmrehberi.data.network.ApiService
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -16,12 +17,12 @@ class MovieRepository @Inject constructor(private val apiService: ApiService, pr
         try {
             val response= apiService.searchMovies(searchQuery = query, page = 1)
 
-            val movieEntities= response.searchResults.map { searchResult ->
+            val movieEntities= response.Search.map { searchResult ->
                 MovieEntity(
                     imdbID = searchResult.imdbID,
-                    title = searchResult.title,
-                    year = searchResult.year,
-                    posterUrl = searchResult.posterUrl
+                    title = searchResult.Title,
+                    year = searchResult.Year,
+                    posterUrl = searchResult.Poster
                 )
 
             }
@@ -32,5 +33,9 @@ class MovieRepository @Inject constructor(private val apiService: ApiService, pr
         }catch (e: Exception){
             e.printStackTrace()
         }
+    }
+
+    suspend fun getMovieDetail(imdbId: String): MovieDetail{
+        return apiService.getMovieDetail(imdbId)
     }
 }

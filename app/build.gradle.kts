@@ -16,9 +16,7 @@ plugins {
 
 android {
     namespace = "com.example.filmrehberi"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk=36
 
     defaultConfig {
         applicationId = "com.example.filmrehberi"
@@ -55,6 +53,9 @@ android {
     buildFeatures {
         buildConfig= true
         compose = true
+    }
+    composeOptions { // <-- BU BLOĞU EKLE
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 }
 
