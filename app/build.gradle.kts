@@ -108,4 +108,6 @@ dependencies {
     implementation(libs.hilt.work)
     ksp(libs.hilt.compiler)
 
+    testImplementation("io.mockk:mockk:1.13.12")
+    testImplementation(libs.kotlinx.coroutines.test)
 }
